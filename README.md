@@ -25,12 +25,12 @@
 | user                                | references | foreign_key: true |
 | product_name                        | string     | null: false       |
 | text                                | text       | null: false       |
-| category_id                         | integer     | null: false       |
+| category_id                         | integer    | null: false       |
 | product_condition_id                | integer    | null: false       |
 | shipping_charge_id                  | integer    | null: false       |
 | shipping_area_id                    | integer    | null: false       |
 | delivery_time_id                    | integer    | null: false       |
-| price                               | integer     | null: false       |
+| price                               | integer    | null: false       |
 
 ### Association
 
@@ -47,6 +47,7 @@
 ### Association
 
 - belongs_to :item
+- belongs_to :user
 - has_one :address
 
 ## addresses table
@@ -55,7 +56,7 @@
 |--------------------|---------------------|-------------------------|
 | order              | references          | foreign_key: true       |
 | postal_code        | string              | null: false             |
-| shipping_area_id   | string              | null: false             |
+| shipping_area_id   | integer             | null: false             |
 | city               | string              | null: false             |
 | house_number       | string              | null: false             |
 | building_name      | string              |                         |
