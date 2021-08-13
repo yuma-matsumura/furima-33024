@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :email, uniqueness: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   with_options format: { with: VALID_PASSWORD_REGEX } do
@@ -18,7 +17,7 @@ class User < ApplicationRecord
     validates :first_name
   end
 
-  VALID_NAME_KANA_REGEX = /\A[ァ-ヶ]+\z/i.freeze
+  VALID_NAME_KANA_REGEX = /\A[ァ-ヶ一]+\z/i.freeze
   with_options presence: true, format: { with: VALID_NAME_KANA_REGEX } do
     validates :family_name_kana
     validates :first_name_kana
