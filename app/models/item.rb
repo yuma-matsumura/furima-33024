@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   end
 
   with_options presence: true do
+    validates :image
     validates :product_name
     validates :text
     validates :price, inclusion: { in: 300..9_999_999 }
@@ -15,7 +16,7 @@ class Item < ApplicationRecord
 
   with_options numericality: { other_than: 1 , message: "can't be blank"} do
     validates :category_id
-    validates :password_confirmation_id
+    validates :product_condition_id
     validates :shipping_charge_id
     validates :shipping_area_id
     validates :delivery_time_id
