@@ -59,12 +59,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格が¥299の場合登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it '価格が¥10,000,000の場合登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
@@ -92,6 +92,36 @@ RSpec.describe Item, type: :model do
         @item.price = 'ｱ'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+      it 'カテゴリー情報が---の場合登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it '商品の状態についての情報が---の場合登録できない' do
+        @item.product_condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Product condition can't be blank")
+      end
+      it '送料の負担についての情報が---の場合登録できない' do
+        @item.shipping_charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
+      end
+      it '発送元の地域についての情報が---の場合登録できない' do
+        @item.shipping_area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping area can't be blank")
+      end
+      it '発送までの日数についての情報が---の場合登録できない' do
+        @item.delivery_time_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery time can't be blank")
+      end
+      it 'userが紐付いていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end

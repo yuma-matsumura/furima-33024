@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     validates :price, inclusion: { in: 300..9_999_999 }
   end
 
-  validates :price, numericality: true
+  validates :price, numericality: { only_integer: true }
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
