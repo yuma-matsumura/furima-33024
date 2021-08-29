@@ -1,0 +1,2 @@
+class PurchaseForm < ApplicationRecord
+end
