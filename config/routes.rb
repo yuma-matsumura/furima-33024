@@ -3,3 +3,4 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :items
     resources :purchase_form, only: [:index, :create]
+end
