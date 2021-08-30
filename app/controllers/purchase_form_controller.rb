@@ -1,11 +1,15 @@
 class PurchaseFormController < ApplicationController
   def index
+    @purchase = PurchaseForm.all
   end
 
   def create
     @purchase = PurchaseForm.new(set_params)
     if @purchase.valid?
        @purchase.save
+       redirect_to root_path
+    else
+      render :index
     end
 
   end
