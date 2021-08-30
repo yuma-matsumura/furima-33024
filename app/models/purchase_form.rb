@@ -11,6 +11,7 @@ class PurchaseForm
     validates :telephone_number
   end
 
+  VALID_CITY_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
 
 def save
   Order.create(user_id: user_id, item_id: item_id)
