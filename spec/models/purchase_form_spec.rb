@@ -7,12 +7,16 @@ RSpec.describe PurchaseForm, type: :model do
     @purchase = FactoryBot.build(:purchase_form)
     @purchase.user_id = @user.id
     @purchase.item_id = @item.id
-    sleep(0.1)
+    sleep(0.3)
   end
 
   describe '商品の購入' do
     context '商品購入がうまくいく場合' do
       it 'FactoryBotが機能している場合' do
+        expect(@purchase).to be_valid
+      end
+      it 'building_nameが空でも保存できる' do
+        @purchase.building_name = ''
         expect(@purchase).to be_valid
       end
     end

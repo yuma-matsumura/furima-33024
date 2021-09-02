@@ -1,8 +1,8 @@
 class PurchaseFormController < ApplicationController
   before_action :set_purchase, only: [:index, :create]
   before_action :move_to_signed_in, only: [:index, :create]
-  before_action :move_to_top_page, only: [:index]
-  before_action :move_to_top_page_sold_out, only: [:index]
+  before_action :move_to_top_page, only: [:index, :create]
+  before_action :move_to_top_page_sold_out, only: [:index, :create]
   def index
     @purchase = PurchaseForm.new
   end
@@ -35,14 +35,10 @@ class PurchaseFormController < ApplicationController
   end
 
   def move_to_signed_in
-    redirect_to root_path unless user_signed_in?
+    redirect_to user_session_path unless user_signed_in?
   end
 
   def move_to_top_page
-    redirect_to root_path if current_user == @item.user
-  end
-
-  def move_to_top
     redirect_to root_path if current_user == @item.user
   end
 
