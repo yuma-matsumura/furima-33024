@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   validates :price, numericality: { only_integer: true }
 
-  with_options numericality: { other_than: 1, message: "can't be blank" } do
+  with_options numericality: { other_than: 1, message: "を選択してください" } do
     validates :category_id
     validates :product_condition_id
     validates :shipping_charge_id
