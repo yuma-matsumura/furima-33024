@@ -18,3 +18,12 @@ ja:
         shipping_charge_id: 配送料の負担
         shipping_area_id: 発送先の地域
         delivery_time_id: 発送までの日数
+  activemodel:
+    attributes:
+      purchase_form:
+        token: クレジットカード情報
+        postal_code: 郵便番号
+        city: 市区町村
+        house_number: 番地
+        telephone_number: 電話番号
+        shipping_area_id: 都道府県

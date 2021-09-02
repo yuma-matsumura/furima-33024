@@ -15,7 +15,7 @@ class PurchaseForm
     validates :telephone_number
   end
 
-  with_options numericality: { other_than: 1, message: "can't be blank" } do
+  with_options numericality: { other_than: 1, message: "を選択してください" } do
     validates :shipping_area_id
   end
 

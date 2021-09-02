@@ -33,50 +33,50 @@ RSpec.describe PurchaseForm, type: :model do
       it '郵便番号が空では保存できない' do
         @purchase.postal_code = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal codeを入力してください")
+        expect(@purchase.errors.full_messages).to include("郵便番号を入力してください")
       end
       it 'tokenが空では保存できない' do
         @purchase.token = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Tokenを入力してください")
+        expect(@purchase.errors.full_messages).to include("クレジットカード情報を入力してください")
       end
       it '都道府県が空では保存できない' do
         @purchase.shipping_area_id = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Shipping areaを入力してください")
+        expect(@purchase.errors.full_messages).to include("都道府県を入力してください")
       end
       it '市区町村が空では保存できない' do
         @purchase.city = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Cityを入力してください")
+        expect(@purchase.errors.full_messages).to include("市区町村を入力してください")
       end
       it '番地が空では保存できない' do
         @purchase.house_number = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("House numberを入力してください")
+        expect(@purchase.errors.full_messages).to include("番地を入力してください")
       end
       it '電話番号が空では保存できない' do
         @purchase.telephone_number = ''
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Telephone numberを入力してください")
+        expect(@purchase.errors.full_messages).to include("電話番号を入力してください")
       end
 
       it '郵便番号に-がない場合保存できない' do
         @purchase.postal_code = '3334444'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include('Postal codeは不正な値です')
+        expect(@purchase.errors.full_messages).to include('郵便番号は不正な値です')
       end
 
       it '電話番号が12桁の場合保存できない' do
         @purchase.telephone_number = '111111111111'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include('Telephone numberは不正な値です')
+        expect(@purchase.errors.full_messages).to include('電話番号は不正な値です')
       end
 
       it '電話番号に-がある場合保存できない' do
         @purchase.telephone_number = '1-1'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include('Telephone numberは不正な値です')
+        expect(@purchase.errors.full_messages).to include('電話番号は不正な値です')
       end
     end
   end
