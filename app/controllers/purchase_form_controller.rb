@@ -1,6 +1,6 @@
 class PurchaseFormController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_purchase, only: [:index, :create]
-  before_action :move_to_signed_in, only: [:index, :create]
   before_action :move_to_top_page, only: [:index, :create]
   before_action :move_to_top_page_sold_out, only: [:index, :create]
   def index
@@ -32,10 +32,6 @@ class PurchaseFormController < ApplicationController
 
   def set_purchase
     @item = Item.find(params[:item_id])
-  end
-
-  def move_to_signed_in
-    redirect_to user_session_path unless user_signed_in?
   end
 
   def move_to_top_page
